@@ -10,9 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_18_142954) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_18_150036) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "compensation_trips", force: :cascade do |t|
+    t.integer "status"
+    t.bigint "compensation_id", null: false
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["compensation_id"], name: "index_compensation_trips_on_compensation_id"
+    t.index ["trip_id"], name: "index_compensation_trips_on_trip_id"
+  end
+
+  create_table "compensations", force: :cascade do |t|
+    t.string "name"
+    t.integer "co2_absorption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.string "type"
+    t.integer "duration"
+    t.integer "distance"
+    t.integer "co2_capacity"
+    t.bigint "trip_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["trip_id"], name: "index_transports_on_trip_id"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "departure"
+    t.string "destination"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +63,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_142954) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "compensation_trips", "compensations"
+  add_foreign_key "compensation_trips", "trips"
+  add_foreign_key "transports", "trips"
+  add_foreign_key "trips", "users"
 end
