@@ -1,0 +1,2 @@
+class CompensationTripsController < ApplicationController
+end
