@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_18_150036) do
   end
 
   create_table "transports", force: :cascade do |t|
-    t.string "type"
+    t.string "transport_type"
     t.integer "duration"
     t.integer "distance"
     t.integer "co2_capacity"
