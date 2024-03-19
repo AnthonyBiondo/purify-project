@@ -7,3 +7,28 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "open-uri"
+require "faker"
+
+TRANSPORTS = ["plane", "car", "bike", "train", "boat", "carpool", "bus"]
+
+puts "let's hydrate the db with trips ..."
+Trip.destroy_all
+
+(1..20).each do |i|
+  Trip.create(departure: Faker::Address.city, destination: Faker::Address.city, user_id: i)
+end
+
+puts "let's hydrate the db with transports ..."
+
+(1..20).each do |i|
+  Transport.create(transport_type: TRANSPORTS.sample, duration: Faker::Number.number(digits: 2), distance: Faker::Number.number(digits: 5), co2_capacity: Faker::Number.number(digits: 4), trip_id: i)
+end
+
+puts "let's hydrate the db with compensations ..."
+
+(1..5).each do |i|
+  Compensation.create(name: Faker::Company.catch_phrase, co2_absorption: Faker::Number.number(digits: 2))
+end
+
+puts "ok that's all"
