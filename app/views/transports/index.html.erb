@@ -1,0 +1,8 @@
+<div class="container">
+<h1>Choissisez Votre Eco-transport</h1>
+<ul>
+  <% @transports.each do |transport| %>
+    <li><p><%= link_to transport.transport_type, trip_add_transport_path(@trip, {transport_id: transport}) %>, Temps de trajet : <%= transport.duration %>, Distance du trajet : <%= transport.distance %>, Emprunte Ecologique : <%= transport.co2_capacity %></p></li>
+  <% end %>
+</ul>
+</div>

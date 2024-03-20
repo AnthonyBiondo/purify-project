@@ -1,3 +1,3 @@
 class Transport < ApplicationRecord
-  belongs_to :trip
+  belongs_to :trip, optional: true
 end

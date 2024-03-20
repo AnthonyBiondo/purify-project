@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root "trips#new"
 
-  resources :trip, only:[:index, :new, :create, :edit, :update] do
-    resources :transport, only: [:new, :create, :edit, :update]
+  resources :trips, only:[:index, :show, :new, :create, :edit, :update] do
+    resources :transports, only: [:index]
+    get "transport_type", to: "trips#add_transport", as: "add_transport"
   end
-
   # resources :transport, only: [:update]
 
   resources :compensation_trip, only: [:create]
