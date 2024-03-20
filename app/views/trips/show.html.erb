@@ -1,7 +1,14 @@
 <div class="container">
-<h1>Votre destination</h1>
-  <p><%= @trip.destination %></p>
+  <h1>Votre destination</h1>
+    <p><%= @trip.destination %></p>
 
-<h2>Moyen de transport Choisis</h2>
-<%= @transport.transport_type %>
+  <h2>Moyen de transport Choisis</h2>
+  <%= @transport.transport_type %>
+
+
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
