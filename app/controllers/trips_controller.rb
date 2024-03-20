@@ -7,19 +7,30 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @transport = @trip&.transport_id
     @transport = Transport.find(@transport)
+    @flats = Trip.all
+  # The `geocoded` scope filters only flats with coordinates
+    @markers = @flats.geocoded.map do |flat|
+    {
+      lat: flat.latitude,
+      lng: flat.longitude
+    }
+    end
   end
+
+  #GEOMAP
+
+
+  #FIN GEOMAP
 
   def new
     @trip = Trip.new
   end
 
   def create
-    @trip = Trip.new(trip_params)
+    @trip = Trip.create(destination: params[:destination])
     @trip.user = current_user
     @trip.save
-
     calculate_transport_attributes
-
 
     redirect_to trip_transports_path(@trip, { transports: @transports })
   end

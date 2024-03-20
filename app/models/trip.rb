@@ -4,4 +4,6 @@ class Trip < ApplicationRecord
   has_one :transport
   has_many :compensationTrips
   has_many :compensations, through: :compensationTrip
+  geocoded_by :destination
+  after_validation :geocode, if: :will_save_change_to_destination?
 end
