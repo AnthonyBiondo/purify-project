@@ -14,24 +14,31 @@ TRANSPORTS = ["plane", "car", "bike", "train", "boat", "carpool", "bus"]
 
 puts "let's hydrate the db with trips ..."
 Trip.destroy_all
-
 User.destroy_all
+Compensation.destroy_all
+Transport.destroy_all
 
 user1 = User.create!(email: "toto@gmail.com", password: "azertyuiop")
 
-(1..20).each do |i|
+(1..20).each do
   Trip.create!(departure: Faker::Address.city, destination: Faker::Address.city, user_id: user1.id)
 end
 
 puts "let's hydrate the db with transports ..."
 
-# (1..20).each do |i|
-#   Transport.create(transport_type: TRANSPORTS.sample, duration: Faker::Number.number(digits: 2), distance: Faker::Number.number(digits: 5), co2_capacity: Faker::Number.number(digits: 4), trip_id: i)
-# end
+(1..20).each do |i|
+  Transport.create(
+    transport_type: TRANSPORTS.sample,
+    duration: Faker::Number.number(digits: 2),
+    distance: Faker::Number.number(digits: 5),
+    co2_capacity: Faker::Number.number(digits: 4),
+    trip_id: i
+  )
+end
 
 puts "let's hydrate the db with compensations ..."
 
-(1..5).each do |i|
+(1..5).each do
   Compensation.create(name: Faker::Company.catch_phrase, co2_absorption: Faker::Number.number(digits: 2))
 end
 

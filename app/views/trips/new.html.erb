@@ -1,23 +1,7 @@
-<div class="container">
-<%= simple_form_for @trip do |f| %>
-  <%= f.input :departure %>
-  <%= f.input :destination %>
-  <%= f.submit %>
-<% end %>
-</div>
-
-
-<div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <div class="search_bar">
-      <%= form_with url: trips_path, method: :post, class: "d-flex" do %>
-        <%= text_field_tag :destination ,
-            params[:destination],
-            class: "form-control",
-            placeholder: "Entrez une Destination"
-          %>
-        <%= submit_tag "Voyagez", name: "", class: "btn btn-primary " %>
-      <% end %>
-    </div>
-  </div>
+<div class="container mt-5">
+  <%= simple_form_for @trip do |f| %>
+    <%= f.input :departure %>
+    <%= f.input :destination %>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
 </div>

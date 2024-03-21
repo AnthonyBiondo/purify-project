@@ -7,14 +7,22 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @transport = @trip&.transport_id
     @transport = Transport.find(@transport)
-    @flats = Trip.all
+    @trips = Trip.all
+
   # The `geocoded` scope filters only flats with coordinates
-    @markers = @flats.geocoded.map do |flat|
-    {
-      lat: flat.latitude,
-      lng: flat.longitude
-    }
+    @geo_destination = @trips.geocoded.map do |trip|
+      {
+        lat: trip.latitude,
+        lng: trip.longitude
+      }
     end
+
+    #  @geo_destination = @trip.destination.geocoded.map do |trip|
+    #   {
+    #     lat: trip.latitude,
+    #     lng: trip.longitude
+    #   }
+    # end
   end
 
   #GEOMAP
