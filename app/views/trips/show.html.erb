@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" data-controller="google_map">
   <h1>Votre destination</h1>
     <p><%= @trip.destination %></p>
 
@@ -6,9 +6,10 @@
   <%= @transport.transport_type %>
 
 
-  <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @geo_destination.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
+
+<div data-controller="google-map"
+     data-google-map-markers-value="<%= @markers.to_json %>"
+>
+ <div id="map" style="height: 400px;"></div>
+</div>
 </div>

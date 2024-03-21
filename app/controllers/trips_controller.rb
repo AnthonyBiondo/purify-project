@@ -10,13 +10,12 @@ class TripsController < ApplicationController
     @trips = Trip.all
 
   # The `geocoded` scope filters only flats with coordinates
-    @geo_destination = @trips.geocoded.map do |trip|
-      {
-        lat: trip.latitude,
-        lng: trip.longitude
-      }
-    end
-
+    @markers = @trip.geocode
+    destination_marker = Geocoder.search(@trip.destination)
+    departure_marker = Geocoder.search(@trip.departure)
+    destination_lat_long = [destination_marker[0].latitude, destination_marker[0].longitude]
+    departure_lat_long = [departure_marker[0].latitude, departure_marker[0].longitude]
+    @markers = [destination_lat_long, departure_lat_long]
     #  @geo_destination = @trip.destination.geocoded.map do |trip|
     #   {
     #     lat: trip.latitude,
@@ -35,7 +34,7 @@ class TripsController < ApplicationController
   end
 
   def create
-    @trip = Trip.create(destination: params[:destination])
+    @trip = Trip.create(trip_params)
     @trip.user = current_user
     @trip.save
     calculate_transport_attributes
