@@ -1,6 +1,7 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $navy;
+  box-shadow: 5px 0px 24px 0px rgba(118, 92, 222, 0.24);
 }
 
 .navbar-lewagon .navbar-collapse {

@@ -7,20 +7,25 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family:   $headers-font;
-$body-bg:                $light-gray;
+$body-bg:                $navy;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$body-color: $very-light-grey;
+$primary:    $dark-violet;
+$success:    $very-light-grey;
+$info:       $violet;
+$danger:     $pink;
+$warning:    $pink;
 
 // Buttons & inputs' radius
-$border-radius:    2px;
-$border-radius-lg: 2px;
-$border-radius-sm: 2px;
+$border-radius:    24px;
+$border-radius-lg: 24px;
+$border-radius-sm: 24px;
 
 // Override other variables below!
+$text-color: $very-light-grey;
+
+$navbar-color:$text-color;
+$nav-link-color:$text-color;
+$emphasis-color-rgb:$text-color
