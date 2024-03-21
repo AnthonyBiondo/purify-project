@@ -20,21 +20,23 @@ Transport.destroy_all
 
 user1 = User.create!(email: "toto@gmail.com", password: "azertyuiop")
 
-(1..20).each do
-  Trip.create!(departure: Faker::Address.city, destination: Faker::Address.city, user_id: user1.id)
-end
+# (1..20).each do
+#   Trip.create!(departure: Faker::Address.city, destination: Faker::Address.city, user_id: user1.id)
+# end
+
+Trip.create!(departure: "Marseille", destination: "Athenes", user_id: user1.id)
 
 puts "let's hydrate the db with transports ..."
 
-(1..20).each do |i|
-  Transport.create(
-    transport_type: TRANSPORTS.sample,
-    duration: Faker::Number.number(digits: 2),
-    distance: Faker::Number.number(digits: 5),
-    co2_capacity: Faker::Number.number(digits: 4),
-    trip_id: i
-  )
-end
+# (1..20).each do |i|
+#   Transport.create(
+#     transport_type: TRANSPORTS.sample,
+#     duration: Faker::Number.number(digits: 2),
+#     distance: Faker::Number.number(digits: 5),
+#     co2_capacity: Faker::Number.number(digits: 4),
+#     trip_id: i
+#   )
+# end
 
 puts "let's hydrate the db with compensations ..."
 

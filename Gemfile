@@ -29,6 +29,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 gem "cloudinary"
 gem "geocoder"
+gem 'google_maps_service'
 
 
 # Use Redis adapter to run Action Cable in production
