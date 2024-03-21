@@ -1,11 +1,13 @@
-<div class="container">
-  <h1 class="mb-3">What is your next trip ?</h1>
-  <%= simple_form_for @trip do |f| %>
-    <%= f.input :departure, label: false, placeholder:"Departure" %>
-    <%= f.input :destination, label: false, placeholder:"Destination" %>
-    <%= f.button :button, class:"btn btn-primary absolute rounded-circle" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    <% end %>
+<div class="backgroundhp">
+  <div class="container">
+    <h1 class="mb-3">What is your next trip ?</h1>
+    <%= simple_form_for @trip do |f| %>
+      <%= f.input :departure, label: false, placeholder:"Departure" %>
+      <%= f.input :destination, label: false, placeholder:"Destination" %>
+      <%= f.button :button, class:"btn btn-primary absolute rounded-circle" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>

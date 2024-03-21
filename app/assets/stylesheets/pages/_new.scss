@@ -1,3 +1,13 @@
+
+.backgroundhp{background-image:
+                linear-gradient(to bottom, rgba(20, 22, 39, 0), rgba(20, 22, 39, 0.8)),
+                url("https://res.cloudinary.com/ddz1wg1i0/image/upload/v1711033871/mpdqsf2u6pubfieujm1i.png");
+                height:570px;
+                background-size: cover;
+                background-position: center;
+                padding-top:250px;
+              }
+
 .new_trip{display:flex;width:100%;justify-content: space-between;align-items: center;position:relative;}
 .absolute{position:absolute;right:10px;top:10px;height:42px;width:42px;}
 .form-control{background-color: $very-light-grey;color:$navy;padding:10px 25px;height:60px;}
