@@ -1,8 +1,14 @@
 .heroShow{
-  background-image: linear-gradient(to bottom, rgba(20, 22, 39, 0.75), rgba(20, 22, 39, 0.75)),
-  url("https://loremflickr.com/1500/800/dubai,landscape");
   height:386px;
   background-size: cover;
   background-position: center;
 }
-.section{margin-top:48px;}
+.section{    margin-top: 60px;
+    margin-right: auto;
+    margin-left: auto;}
+.imgsvg{text-align: center;margin:42px 0;}
+
+.co2-form input{background-color: $navy;border-color: $dark-violet;height:48px;}
+.co2-form input:focus{background-color: $navy;color: $very-light-grey;}
+.co2-form .submit-co2{border-color: $violet;height:48px;color:$very-light-grey;width:50%;}
+.co2-form {margin:20px 0;}
