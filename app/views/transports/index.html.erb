@@ -1,8 +1,66 @@
 <div class="container">
-<h1>Choissisez Votre Eco-transport</h1>
+  <div class="transport">
+    <h1>Choissisez Votre Moyens de transport</h1>
+  </div>
+
+  <div class="vide">
+  </div>
+
+  <div class="">
+    <h2>Need inspiration ?</h2>
+    <p>Get inspired with the favorites destination of users</p>
+  </div>
+
+</div>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="transport col-9">
+
+      <div class="ligne1 d-flex">
+
+        <div class="haut-gauche position-relative">
+          <div class="bton position-absolute bottom-0 end-0">
+          </div>
+        </div>
+
+        <div class="haut-droit position-relative">
+           <div class="bton position-absolute bottom-0 end-0">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ligne2">
+
+        <div class="milieu position-relative">
+         <div class="bton position-absolute bottom-0 end-0">
+          </div>
+        </div>
+
+      </div>
+
+      <div class="ligne3 d-flex">
+
+        <div class="bas-gauche position-relative">
+         <div class="bton position-absolute bottom-0 end-0">
+          </div>
+        </div>
+
+        <div class="bas-droit position-relative">
+         <div class="bton position-absolute bottom-0 end-0">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <ul>
   <% @transports.each do |transport| %>
     <li><p><%= link_to transport.transport_type, trip_add_transport_path(@trip, {transport_id: transport}) %>, Temps de trajet : <%= transport.duration %>, Distance du trajet : <%= transport.distance %>, Emprunte Ecologique : <%= transport.co2_capacity %></p></li>
   <% end %>
 </ul>
-</div>
