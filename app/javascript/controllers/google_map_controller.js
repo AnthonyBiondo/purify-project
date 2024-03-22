@@ -6,10 +6,11 @@ export default class extends Controller {
     markers: Array
   };
 
+
   connect() {
     this.initMap();
-    console.log(this.element);
-    console.log(this.markersValue)
+    // console.log(this.element);
+    // console.log(this.markersValue)
   }
 
   // Initialize and add the map
@@ -26,6 +27,8 @@ export default class extends Controller {
       zoom: 2,
       center: position,
       mapId: "DEMO_MAP_ID",
+
+
     });
 
     this.markersValue.forEach((marker) => {
