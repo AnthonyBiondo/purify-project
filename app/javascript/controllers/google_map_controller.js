@@ -13,7 +13,6 @@ export default class extends Controller {
   }
 
   // Initialize and add the map
-
   async initMap() {
     // The location of Uluru
     const position = { lat: 25.2048493, lng: 55.2707828 };
@@ -37,7 +36,5 @@ export default class extends Controller {
         title: "Uluru",
       });
     })
-
-    // The marker, positioned at Uluru
   }
 }
