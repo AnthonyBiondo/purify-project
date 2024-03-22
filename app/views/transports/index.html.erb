@@ -1,30 +1,60 @@
 <div class="container">
-  <div class="transport">
-    <h1>Choissisez Votre Moyens de transport</h1>
+  <div class="transport col-8">
+    <h1 class="tansport">Choissisez Votre Moyens de transport</h1>
   </div>
+</div>
 
-  <div class="vide">
+<div class="container">
+  <div class="row">
+    <div class="auto col-8">
+      <div class="inspiration d-inline-block">
+        <div class="d-flex align-items-center">
+          <div class="puceText">
+          </div>
+          <h2 class=" ml-3 mb-0">Need inspiration ?</h2>
+        </div>
+      </div>
+      <p class="text ml-3 mt-2">Get inspired with the favorites destination of users</p>
+    </div>
   </div>
-
-  <div class="">
-    <h2>Need inspiration ?</h2>
-    <p>Get inspired with the favorites destination of users</p>
-  </div>
-
 </div>
 
 <div class="container">
 
   <div class="row">
 
+<ul>
     <div class="transport col-9">
 
-      <div class="ligne1 d-flex">
+      <div class="ligne1 d-flex flex-wrap">
+  <% @transports.each do |transport| %>
+    <%= link_to trip_add_transport_path(@trip, {transport_id: transport}) do %>
 
         <div class="haut-gauche position-relative">
+          <div class="titre">
+            <h3><%=transport.transport_type%></h3>
+          </div>
+
+          <div class="icone">
+            <%= render partial: "shared/svg/#{transport.transport_type.downcase}" %>
+          </div>
+
+          <div class="description">
+            <p><%= transport.distance %> km</p>
+            <p><%= transport.duration %> h</p>
+            <p><%= transport.co2_capacity %> Kgco2</p>
+          </div>
+
+
           <div class="bton position-absolute bottom-0 end-0">
+          <a class="choosLink" href="/">Selectioner</a>
+
           </div>
         </div>
+
+    <% end %>
+  <% end %>
+</ul>
 
         <div class="haut-droit position-relative">
            <div class="bton position-absolute bottom-0 end-0">
@@ -58,9 +88,3 @@
     </div>
   </div>
 </div>
-
-<ul>
-  <% @transports.each do |transport| %>
-    <li><p><%= link_to transport.transport_type, trip_add_transport_path(@trip, {transport_id: transport}) %>, Temps de trajet : <%= transport.duration %>, Distance du trajet : <%= transport.distance %>, Emprunte Ecologique : <%= transport.co2_capacity %></p></li>
-  <% end %>
-</ul>
