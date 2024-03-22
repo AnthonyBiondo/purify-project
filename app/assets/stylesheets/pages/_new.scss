@@ -11,6 +11,7 @@
 .new_trip{display:flex;width:100%;justify-content: space-between;align-items: center;position:relative;}
 .absolute{position:absolute;right:10px;top:10px;height:42px;width:42px;}
 .form-control{background-color: $very-light-grey;color:$navy;padding:10px 25px;height:60px;}
+.form-control::placeholder {color: $light-grey;}
 .form-control:focus{background-color: $very-light-grey;color:$navy;}
 #trip_destination{border-radius: 0 60px 60px 0;width:100%}
 .trip_destination{width:100%}
