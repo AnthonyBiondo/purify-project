@@ -3,7 +3,9 @@ import { Controller } from "@hotwired/stimulus";
 // Connects to data-controller="google-map"
 export default class extends Controller {
   static values = {
-    markers: Array
+    markers: Array,
+    center: Array,
+    bounding: Array
   };
 
 
@@ -11,12 +13,14 @@ export default class extends Controller {
     this.initMap();
     // console.log(this.element);
     // console.log(this.markersValue)
+    // console.log(this.centerValue)
+    // console.log(this.boundingValue)
   }
 
   // Initialize and add the map
   async initMap() {
     // The location of Uluru
-    const position = { lat: 25.2048493, lng: 55.2707828 };
+    const position = { lat: this.centerValue[0], lng: this.centerValue[1] };
     // Request needed libraries.
     //@ts-ignore
     const { Map } = await google.maps.importLibrary("maps");
@@ -24,10 +28,11 @@ export default class extends Controller {
 
     // The map, centered at Uluru
     this.map = new Map(document.getElementById("map"), {
-      zoom: 2,
+      zoom: 4,
       center: position,
       mapId: "DEMO_MAP_ID",
-
+      fullscreenControl: false,
+      streetViewControl: false,
 
     });
 
@@ -36,8 +41,14 @@ export default class extends Controller {
       const newMarker = new AdvancedMarkerView({
         map: this.map,
         position: this.markerCoordinates,
-        title: "Uluru",
+        title: "Purify_Show",
       });
     })
+
+    const markerBounds = new google.maps.LatlngBounds();
+    this.boundingValue.forEach(bound => {
+      markerBounds.extend(bound);
+    });
+    this.map.fitBounds(markerBounds)
   }
 }

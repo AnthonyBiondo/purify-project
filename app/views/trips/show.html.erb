@@ -12,7 +12,9 @@
       <p>Here is a overview of the trip and his impact</p>
     </div>
       <div data-controller="google-map"
-          data-google-map-markers-value="<%= @markers.to_json %>">
+          data-google-map-markers-value="<%= @markers.to_json %>"
+          data-google-map-center-value="<%= @trip_center.to_json %>"
+          data-google-map-bounding-value="<%= @bounding_params.to_json %>">
         <div id="map" style="height: 400px;"></div>
       </div>
 
@@ -25,7 +27,7 @@
       </div>
       <p>For a trip between <span class="bigtext"><%= @trip.departure %></span> and <span class="bigtext"><%= @trip.destination %></span> : </p>
       <ul>
-        <li>Distance in plane is about : 4200 km</li>
+        <li>Distance in plane is about : <%= @trip_distance.round %> km</li>
         <li>During takeoff and landing, the consumption of the device is 690 liters of kerosene.</li>
       </ul>
     </div>
