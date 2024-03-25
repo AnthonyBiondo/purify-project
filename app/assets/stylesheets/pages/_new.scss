@@ -19,3 +19,108 @@
 .trip_destination{width:100%}
 #trip_departure{border-radius: 60px 0 0 60px;width:100%}
 .trip_departure{width:100%;}
+
+.dubai{
+  width: 464px;
+  background-color: #1C1F36;
+  height: 800px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(<path-to-image>) lightgray -280.443px -10.986px / 266.89% 102.747% no-repeat, #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.istambul{
+  width: 464px;
+  height: 250px;
+  background-color: #1C1F36;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.20) 0%, rgba(0, 0, 0, 0.20) 100%), url(<path-to-image>) lightgray -19px -42.153px / 108.19% 133.722% no-repeat, #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.malte {
+  width: 464px;
+  height: 251px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-color: #1C1F36;
+}
+
+.naple{
+  width: 220px;
+  height: 251px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-color: #1C1F36;
+}
+
+.santorin{
+  width: 342px;
+  height: 251px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-color: #1C1F36;
+}
+
+.paris{
+  width: 342px;
+  height: 525px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-color: #1C1F36;
+}
+
+.malaga{
+  margin-left: 9px;
+  width: 220px;
+  height: 251px;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background-color: #1C1F36;
+}
+
+
+
+.istambul{
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+
+.malte{
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+
+}
+
+.naple{
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 12px;
+
+}
+
+.santorin{
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.paris{
+  margin-bottom: 12px;
+}
+
+
+.bttn{
+  display: inline-flex;
+  padding: 8px 45px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  border: 2px solid #FFF;
+  margin: 12px;
+  text-decoration: none;
+}
