@@ -8,7 +8,6 @@ export default class extends Controller {
     bounding: Array
   };
 
-
   connect() {
     this.initMap();
     // console.log(this.element);
@@ -51,4 +50,5 @@ export default class extends Controller {
     });
     this.map.fitBounds(markerBounds)
   }
+
 }
