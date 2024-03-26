@@ -27,22 +27,22 @@
     <div class="transport col-9">
 
       <div class="ligne1 d-flex flex-wrap">
-  <% @transports.each do |transport| %>
-    <%= link_to trip_add_transport_path(@trip, {transport_id: transport}) do %>
+  <% @transport_types.each do |transport_type| %>
 
+    <%= link_to trip_add_transport_path(@trip, {transport_type: transport_type, trip_distance: @trip_distance}) do %>
         <div class="haut-gauche position-relative">
           <div class="titre">
-            <h3><%=transport.transport_type%></h3>
+            <h3><%=transport_type.name%></h3>
           </div>
 
           <div class="icone">
-            <%= render partial: "shared/svg/#{transport.transport_type.downcase}" %>
+            <%= render partial: "shared/svg/#{transport_type.name.downcase}" %>
           </div>
 
           <div class="description">
-            <p><%= transport.distance %> km</p>
-            <p><%= transport.duration %> h</p>
-            <p><%= transport.co2_capacity %> Kgco2</p>
+            <p><%= @trip_distance.round %> km</p>
+            <%# <p><%= @transport.duration %> h</p>
+            <%# <p><%= @transport.co2_capacity %> Kgco2</p>
           </div>
 
 
@@ -56,35 +56,8 @@
   <% end %>
 </ul>
 
-        <div class="haut-droit position-relative">
-           <div class="bton position-absolute bottom-0 end-0">
-          </div>
-        </div>
 
-      </div>
 
-      <div class="ligne2">
-
-        <div class="milieu position-relative">
-         <div class="bton position-absolute bottom-0 end-0">
-          </div>
-        </div>
-
-      </div>
-
-      <div class="ligne3 d-flex">
-
-        <div class="bas-gauche position-relative">
-         <div class="bton position-absolute bottom-0 end-0">
-          </div>
-        </div>
-
-        <div class="bas-droit position-relative">
-         <div class="bton position-absolute bottom-0 end-0">
-          </div>
-        </div>
-
-      </div>
     </div>
   </div>
 </div>

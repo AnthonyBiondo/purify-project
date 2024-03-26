@@ -4,7 +4,6 @@ class CreateCompensationTrips < ActiveRecord::Migration[7.1]
       t.integer :status
       t.references :compensation, null: false, foreign_key: true
       t.references :trip, null: false, foreign_key: true
-
       t.timestamps
     end
   end
