@@ -1,5 +1,5 @@
 <div class="backgroundhp">
-  <div class="container">
+  <div class="container col-6">
     <h1 class="mb-5">What is your next trip ?</h1>
     <%= simple_form_for @trip do |f| %>
       <%= f.input :departure, label: false, placeholder:"Departure" %>
@@ -8,65 +8,71 @@
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
     <% end %>
+    <div class="inspiration">
+    <div class="rectangle">
+    </div>
+
+    <div class="nom">
+      <h2 class="inspi">Need Inspiration ?</h2>
+      <p class="acceuil">Get inspired with the favorites destination of users</p>
+    </div>
+  </div>
   </div>
 </div>
 
+
 <div class="container">
+  <div class="grid">
 
-  <div class="row justify-content-center align-items-center">
-    <div class="galery d-flex flex-wrap">
-      <div class="colone1">
-        <div class="dubai position-relative ">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">Dubai</a>
+    <div class="col1">
+      <div class="dubai">
+      <a class="boutn" href="/">Dubai</a>
+      </div>
+    </div>
+
+    <div class="col2">
+      <div class="col2-ligne1">
+        <div class="col2-col1">
+          <div class="col2-col1-ligne1">
+            <div class="istambule">
+              <a class="boutn" href="/">Istanbul</a>
+            </div>
+          </div>
+
+          <div class="col2-col1-ligne2">
+            <div class="malte">
+              <a class="boutn" href="/">Malte</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col2-col2">
+          <div class="paris">
+            <a class="boutn" href="/">Paris</a>
           </div>
         </div>
       </div>
 
-      <div class="colone2">
-        <div class="istambul position-relative">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">istambul</a>
+
+      <div class="col2-ligne2">
+        <div class="col2-line2-col1">
+          <div class="naples">
+            <a class="boutn" href="/">Naples</a>
           </div>
         </div>
 
-
-        <div class="malte position-relative">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">Malte</a>
+        <div class="col2-line2-col2">
+          <div class="santorin">
+            <a class="boutn" href="/">Santorin</a>
           </div>
         </div>
 
-        <div class="naple position-relative">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">Naple</a>
-          </div>
-        </div>
-
-
-        <div class="santorin position-relative">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">Santorin</a>
+        <div class="col2-line2-col3">
+          <div class="malaga">
+            <a class="boutn" href="/">Malaga</a>
           </div>
         </div>
       </div>
-
-      <div class="colone3">
-        <div class="paris position-relative ">
-          <div>
-            <a class="bttn position-absolute bottom-0 end-0"href="/">Paris</a>
-          </div>
-        </div>
-
-        <div class="col offset-4">
-          <div class="malaga position-relative">
-            <div>
-              <a class="bttn position-absolute bottom-0 end-0"href="/">Malaga</a>
-          </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </div>
