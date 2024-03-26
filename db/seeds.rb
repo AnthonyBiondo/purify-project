@@ -6,7 +6,7 @@
 require "open-uri"
 require "faker"
 
-transport_array = ["Plane", "Car", "Bike", "Walk"]
+transport_array = ["plane", "driving", "bicycling", "walking"]
 consumption_array = ["5", "8", "0", "0"]
 
 Trip.destroy_all

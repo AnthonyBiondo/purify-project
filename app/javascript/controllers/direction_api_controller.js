@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="direction-api"
 export default class extends Controller {
-
   static values = {
     tripDeparture: String,
     tripDestination: String
@@ -14,6 +13,7 @@ export default class extends Controller {
     .then((data) => {
       Object.keys(data).forEach((key => {
         console.log(key)
+        // this.distanceTargets.innerHTML = data[key]
         document.querySelector(`#${key}`).innerHTML = data[key]
       }))
     });
