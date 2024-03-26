@@ -20,14 +20,14 @@
 
     <div class="section col-8">
       <div class="puceText"></div>
-      <h2>Fuel burn</h2>
-      <p>Here is an estimation of burn fuel during this trip</p>
+      <h2>Fuel burned</h2>
+      <p>Here is an estimation of burned fuel during this trip</p>
       <div class="imgsvg">
         <%= render "shared/planechartssvg" %>
       </div>
       <p>For a trip between <span class="bigtext"><%= @trip.departure %></span> and <span class="bigtext"><%= @trip.destination %></span> : </p>
       <ul>
-        <li>Distance in plane is about : <%= @trip_distance.round %> km</li>
+        <li>Distance by plane is about : <%= @trip_distance.round %> km</li>
         <li>During takeoff and landing, the consumption of the device is <%= (@trip_distance.round * 10.5).round %> liters of kerosene.</li>
       </ul>
     </div>
@@ -40,27 +40,55 @@
         <p>paris's Target   Marseille / Milan</p>
       </div>
     </div>
-    <div class="section col-8">
+    <div class="section col-8"
+      data-controller="form-co2-calculation"
+      data-form-co2-calculation-distance-value="<%= @trip_distance.round %>"
+      >
       <div class="puceText"></div>
       <h2>Total CO2 weight of the journey</h2>
       <p>Here is vision of the total weight.</p>
 
-      <div class="row">
+      <div class="row text-end justify-content-end">
         <form action="GET" class="col-10">
+
           <div class="co2-form">
-            <input type="text" placeholder="Class of travel" class="form-control">
+            <select type="text" placeholder="Class of travel" class="form-control" data-form-co2-calculation-target="ticketclass">
+              <option value="1">Eco class</option>
+              <option value="1.2">Eco premium class</option>
+              <option value="1.5">Business Class</option>
+              <option value="1.8">Premiere Business Class</option>
+            </select>
           </div>
+
           <div class="d-flex co2-form gap-3">
-            <input type="text" placeholder="Avion type" class="form-control">
-            <input type="text" placeholder="Number of passengers" class="form-control">
+            <select type="select" placeholder="Avion type" class="form-control" data-form-co2-calculation-target="planetype">
+              <option value="1">A 220</option>
+              <option value="1.01">A 319</option>
+              <option value="1.02">A 320</option>
+              <option value="1.03">A 321</option>
+              <option value="1.05">A 330</option>
+              <option value="1">Boeing 737</option>
+              <option value="1.01">Boeing 757</option>
+              <option value="1.02">Boeing 767</option>
+              <option value="1.03">Boeing 777</option>
+              <option value="1.05">Boeing 787</option>
+              <option value="1.01">Other type of plane</option>
+            </select>
+
+            <select type="text" placeholder="round trip" class="form-control" data-form-co2-calculation-target="roundtype">
+              <option value="1">One way </option>
+              <option value="2">Round trip</option>
+            </select>
+
           </div>
+
           <div class="co2-form">
-            <input type="submit" value="Calcul my emmisions" class="form-control btn btn-primary submit-co2">
+            <input type="submit" value="Calcul my emissions" class="form-control btn btn-primary submit-co2" data-action="click->form-co2-calculation#calculator">
           </div>
 
         </form>
         <p>Your emmisions for this trips are :</p>
-        <h2>0,638 <span class="smalltxt">tCO2e/passager</span></h2>
+        <h2><span data-form-co2-calculation-target="titreresult"><%= (@trip_distance * 0.23).round %></span> <span class="smalltxt">kgCO²e/passager</span></h2>
       </div>
       <div class="section mb-5">
         <div class="puceText"></div>

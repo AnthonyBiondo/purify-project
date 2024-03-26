@@ -3,13 +3,15 @@
   background-size: cover;
   background-position: center;
 }
-.section{    margin-top: 60px;
+.section{    margin-top: 78px;
     margin-right: auto;
     margin-left: auto;}
 .imgsvg{text-align: center;margin:42px 0;}
 
-.co2-form input{background-color: $navy;border-color: $dark-violet;height:48px;}
+.co2-form input{background-color: $navy;border-color: $dark-violet;height:48px;color: $very-light-grey;}
+.co2-form select{background-color: $navy;border-color: $dark-violet;height:48px;color: $very-light-grey;}
 .co2-form input:focus{background-color: $navy;color: $very-light-grey;}
+.co2-form select:focus{background-color: $navy;color: $very-light-grey;}
 .co2-form .submit-co2{border-color: $violet;height:48px;color:$very-light-grey;width:50%;}
 .co2-form {margin:20px 0;}
 .smalltxt{font-size: small;}

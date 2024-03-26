@@ -12,9 +12,10 @@ export default class extends Controller {
     .then(response => response.json())
     .then((data) => {
       Object.keys(data).forEach((key => {
-        console.log(key)
+        console.log(data)
         // this.distanceTargets.innerHTML = data[key]
         document.querySelector(`#${key}`).innerHTML = data[key]
+
       }))
     });
   }
