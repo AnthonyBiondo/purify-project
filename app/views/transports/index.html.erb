@@ -14,54 +14,40 @@
 </div>
 
 <div class="container">
-
   <div class="row">
-
-<ul>
-    <div class="transport col-10"  data-controller="direction-api"
-       data-direction-api-trip-departure-value="<%= @trip.departure %>"
-       data-direction-api-trip-destination-value="<%= @trip.destination %>">
-
+    <div class="transport col-10" data-controller="direction-api" data-direction-api-trip-departure-value="<%= @trip.departure %>" data-direction-api-trip-destination-value="<%= @trip.destination %>">
       <div class="ligne1 d-flex flex-wrap">
-  <% @transport_types.each do |transport_type| %>
-
-    <%= link_to trip_add_transport_path(@trip, {transport_type: transport_type, trip_distance: @trip_distance}) do %>
-        <div class="transport-card position-relative">
-          <div class="titre">
-            <h3><%=transport_type.name.capitalize%></h3>
-          </div>
-
-          <div class="icone">
-            <%= render partial: "shared/svg/#{transport_type.name.downcase}" %>
-          </div>
-
-          <div class="description">
-            <% if transport_type.name == "plane" %>
-              <p><%= @trip_distance.round %> km</p>
-            <% else %>
-              <p  id="<%= transport_type.name %>_distance"> km</p>
+        <% @transport_types.each do |transport_type| %>
+          <div class="transport-card position-relative">
+            <%= link_to trip_add_transport_path(@trip, {transport_type: transport_type, trip_distance: @trip_distance}) do %>
+              <div class="ligne1 d-flex justify-content-between">
+                <div class="titre">
+                  <h3><%= transport_type.name.capitalize %></h3>
+                </div>
+                <div class="icone">
+                  <%= render partial: "shared/svg/#{transport_type.name.downcase}" %>
+                </div>
+              </div>
+              <div class="totaldescription d-flex">
+                <div class="puceHoriz"></div>
+                <div class="description">
+                  <% if transport_type.name == "plane" %>
+                    <p class="data-trip"><%= @trip_distance.round %> km</p>
+                    <p class="distancefont"><%= (@trip_distance/900).round %> h</p>
+                  <% else %>
+                    <p class="data-trip" id="<%= transport_type.name %>_distance"> <span class="smaller">km</span></p>
+                    <p class ="distancefont"id="<%= transport_type.name %>_duration"> </p>
+                  <% end %>
+                  <p><%= transport_type.fuel_consumption %> Kgco² / 100 km</p>
+                </div>
+              </div>
+              <div class="choosLink bton position-absolute bottom-0 end-0">
+                <a class="boutn" href="/">Selectioner</a>
+              </div>
             <% end %>
-             <% if transport_type.name == "plane" %>
-              <p><%= (@trip_distance/900).round %> h</p>
-            <% else %>
-              <p  id="<%= transport_type.name %>_duration"> </p>
-            <% end %>
-             <p><%= transport_type.fuel_consumption %> Kgco² / 100 km</p>
           </div>
-
-
-          <div class="bton position-absolute bottom-0 end-0">
-          <a class="choosLink" href="/">Selectioner</a>
-
-          </div>
-        </div>
-
-    <% end %>
-  <% end %>
-</ul>
-
-
-
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
