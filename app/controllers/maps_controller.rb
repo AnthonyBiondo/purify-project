@@ -14,8 +14,12 @@ class MapsController < ApplicationController
       url = "https://maps.googleapis.com/maps/api/directions/json?origin=#{origin}&destination=#{destination}&mode=#{transport_mode}&key=#{api_key}"
       response = Net::HTTP.get_response(URI(url))
       json_response = JSON.parse(response.body)
+
       distance_value = json_response["routes"][0]["legs"][0]["distance"]["text"]
-      distance_response_object[transport_mode] = distance_value
+      duration_value = json_response["routes"][0]["legs"][0]["duration"]["text"]
+
+      distance_response_object["#{transport_mode}_distance"] = distance_value
+      distance_response_object["#{transport_mode}_duration"] = duration_value
     end
 
     render json: distance_response_object

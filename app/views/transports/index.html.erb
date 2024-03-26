@@ -1,24 +1,14 @@
 <div class="container">
-  <div class="transport col-8"
-       data-controller="direction-api"
-       data-direction-api-trip-departure-value=<%= @trip_departure %>
-       data-direction-api-trip-destination-value=<%= @trip_destination %>
-  >
-    <h1 class="tansport">Choissisez Votre Moyens de transport</h1>
-  </div>
-</div>
-
-<div class="container">
   <div class="row">
     <div class="auto col-8">
       <div class="inspiration d-inline-block">
-        <div class="d-flex align-items-center">
+
           <div class="puceText">
           </div>
-          <h2 class=" ml-3 mb-0">Need inspiration ?</h2>
-        </div>
+          <h2 class=" ml-3 mb-0">Choose your transport type</h2>
+          <p class="mt-2">Be aware of differents timing, co2 emission and distance for diffrents type of transports</p>
+
       </div>
-      <p class="text ml-3 mt-2">Get inspired with the favorites destination of users</p>
     </div>
   </div>
 </div>
@@ -28,15 +18,17 @@
   <div class="row">
 
 <ul>
-    <div class="transport col-9">
+    <div class="transport col-10"  data-controller="direction-api"
+       data-direction-api-trip-departure-value="<%= @trip.departure %>"
+       data-direction-api-trip-destination-value="<%= @trip.destination %>">
 
       <div class="ligne1 d-flex flex-wrap">
   <% @transport_types.each do |transport_type| %>
 
     <%= link_to trip_add_transport_path(@trip, {transport_type: transport_type, trip_distance: @trip_distance}) do %>
-        <div id="walking" class="haut-gauche position-relative">
+        <div class="transport-card position-relative">
           <div class="titre">
-            <h3><%=transport_type.name%></h3>
+            <h3><%=transport_type.name.capitalize%></h3>
           </div>
 
           <div class="icone">
@@ -44,9 +36,17 @@
           </div>
 
           <div class="description">
-            <p><%= @trip_distance.round %> km</p>
-            <%# <p><%= @transport.duration %> h</p>
-            <%# <p><%= @transport.co2_capacity %> Kgco2</p>
+            <% if transport_type.name == "plane" %>
+              <p><%= @trip_distance.round %> km</p>
+            <% else %>
+              <p  id="<%= transport_type.name %>_distance"> km</p>
+            <% end %>
+             <% if transport_type.name == "plane" %>
+              <p><%= (@trip_distance/900).round %> h</p>
+            <% else %>
+              <p  id="<%= transport_type.name %>_duration"> </p>
+            <% end %>
+             <p><%= transport_type.fuel_consumption %> Kgco² / 100 km</p>
           </div>
 
 
