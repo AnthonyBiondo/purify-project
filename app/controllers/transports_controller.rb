@@ -3,6 +3,9 @@ class TransportsController < ApplicationController
 
   def index
     @transports = Transport.where(id: params[:transports])
+    @trip = Trip.find(params[:trip_id])
+    @trip_departure = @trip.departure
+    @trip_destination = @trip.destination
   end
 
 #   def create

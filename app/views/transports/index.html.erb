@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="transport col-8">
+  <div class="transport col-8"
+       data-controller="direction-api"
+       data-direction-api-trip-departure-value=<%= @trip_departure %>
+       data-direction-api-trip-destination-value=<%= @trip_destination %>
+  >
     <h1 class="tansport">Choissisez Votre Moyens de transport</h1>
   </div>
 </div>
@@ -30,7 +34,7 @@
   <% @transports.each do |transport| %>
     <%= link_to trip_add_transport_path(@trip, {transport_id: transport}) do %>
 
-        <div class="haut-gauche position-relative">
+        <div id="walking" class="haut-gauche position-relative">
           <div class="titre">
             <h3><%=transport.transport_type%></h3>
           </div>
