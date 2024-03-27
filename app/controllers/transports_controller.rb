@@ -2,7 +2,7 @@ class TransportsController < ApplicationController
   before_action :set_trip, only: %i[index]
 
   def index
-    @transports = Transport.where(id: params[:transports])
+    # @transports = Transport.where(id: params[:transports])
     @transport_types = TransportType.all
 
     geocoder_transport
@@ -14,6 +14,13 @@ class TransportsController < ApplicationController
 #     @transport.save
 #     redirect_to trips_path(@trip)
 #   end
+
+  def add_co2_to_transport
+    transport = Transport.find(params[:transport_id])
+    co2_capacity = params[:co2_capacity]
+    transport.update(co2_capacity: co2_capacity)
+    redirect_to users_account_path
+  end
 
   private
 
