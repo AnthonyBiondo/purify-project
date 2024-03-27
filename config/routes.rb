@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 
   resources :trips, only:[:index, :show, :new, :create, :edit, :update] do
     resources :transports, only: [:index]
-    get "transport_type", to: "trips#add_transport", as: "add_transport"
   end
+  get "transport_type", to: "trips#add_transport", as: "add_transport"
   # resources :transport, only: [:update]
 
-  resources :compensation_trip, only: [:create]
+  get "transport", to: "transports#add_co2_to_transport", as: "add_co2"
 
+  resources :compensation_trip, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   get "/directions", to: "maps#directions"
-
+  get "/users/account", to: "pages#account"
   # Defines the root path route ("/")
   # root "posts#index"
 end
