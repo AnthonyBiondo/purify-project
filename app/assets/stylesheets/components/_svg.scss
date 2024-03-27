@@ -1,0 +1,29 @@
+@keyframes drawingSvg {
+  from{
+    stroke-dashoffset:-330;
+  }
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+
+
+.polyline{
+  stroke-dasharray: 350;
+  animation: drawingSvg 3s cubic-bezier(0.62, 0.00, 0.38, 1) 0.5s normal both;
+}
+
+@keyframes drawingSvgPink {
+  from{
+    stroke-dashoffset:760;
+  }
+  to{
+    stroke-dashoffset: 0;
+  }
+}
+
+.pinkline{
+  stroke-dasharray: 760;
+  animation: drawingSvgPink 2s cubic-bezier(0.62, 0.00, 0.38, 1) 1.5s normal both;
+}

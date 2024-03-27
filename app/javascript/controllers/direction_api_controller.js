@@ -3,7 +3,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     tripDeparture: String,
-    tripDestination: String
+    tripDestination: String,
+    tripConsumption: Number
   };
 
   connect() {
@@ -15,7 +16,8 @@ export default class extends Controller {
         console.log(data)
         // this.distanceTargets.innerHTML = data[key]
         document.querySelector(`#${key}`).innerHTML = data[key]
-
+        const result = (parseInt(data["driving_distance"], 10) * this.tripConsumptionValue)
+        document.querySelector(`#driving_consumption`).innerHTML = `${result} litres de super gazoil`
       }))
     });
   }
