@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   end
   # resources :transport, only: [:update]
 
-  resources :compensation_trip, only: [:create]
+  resources :compensation_trips, only: [:create, :show, :index]
 
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
