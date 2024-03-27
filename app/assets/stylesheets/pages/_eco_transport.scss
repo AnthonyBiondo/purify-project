@@ -1,6 +1,6 @@
 .transport-card{
   width: 45%;
-  height: 363px;
+  height: auto;
   flex-shrink: 0;
   border-radius: 24px;
   background: #1C1F36;
@@ -103,7 +103,7 @@ text-decoration: none;}
 
 .puceHoriz{
   width: 2px;
-  height: 132.799px;
+  height: auto;
   transform: rotate(179.986deg);
   flex-shrink: 0;
   background: var(--Very-Light-Grey, #F3F3F3);
