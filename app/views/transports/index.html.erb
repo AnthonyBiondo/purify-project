@@ -25,7 +25,7 @@
         <% @transport_types.each do |transport_type| %>
 
           <div class="transport-card position-relative">
-            <%= link_to add_transport_path(trip_id: @trip.id, transport_type: transport_type, trip_distance: @trip_distance) do %>
+            <%= link_to add_transport_path(trip_id: @trip.id, transport_type: transport_type, trip_distance: @trip_distance), data:{turbo:false} do %>
 
               <div class="ligne1 d-flex justify-content-between">
 

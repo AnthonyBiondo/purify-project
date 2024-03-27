@@ -6,11 +6,16 @@
       <p>Find here an overview of all your trips and compensations</p>
       <div class="ligne1 d-flex flex-wrap">
 
+      <%
+      carbon_sum = 0
+      current_user.trips.each {|trip| carbon_sum += trip.transport.co2_capacity }
+      %>
+
         <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
           <h3>Total Co² emission balance</h3>
           <div class="totaldescription text-left border-left">
             <div class="description">
-              <p>850 Kg co² e</p>
+              <p><%= carbon_sum %> Kg co² e</p>
             </div>
           </div>
           <div class="btn btn-outline-secondary px-4">See details</div>
@@ -20,7 +25,9 @@
           <h3>Total balance sheet compensation</h3>
           <div class="totaldescription text-left border-left my-3">
             <div class="description">
-              <p>850 Kg co² e</p>
+
+
+              <p>150 Kg co² e</p>
               <p class="smaller">7 years yet for a balanced account</p>
             </div>
           </div>
