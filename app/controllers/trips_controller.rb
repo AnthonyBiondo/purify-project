@@ -7,7 +7,7 @@ class TripsController < ApplicationController
 
   def show
     @transport = @trip.transport
-    @trips = Trip.all
+
 
     geocoder_transport
   end
@@ -21,7 +21,7 @@ class TripsController < ApplicationController
     @trip.user = current_user
     @trip.save
 
-    redirect_to trip_transports_path(@trip, { transports: @transports })
+    redirect_to trip_transports_path(@trip)
   end
 
   def edit
@@ -42,6 +42,7 @@ class TripsController < ApplicationController
       co2_capacity: "pas codé"
     )
     transport.trip = trip
+    trip.transport = transport
     transport.save
     trip.save
     redirect_to trip_path(trip)
@@ -57,12 +58,12 @@ class TripsController < ApplicationController
     params.require(:trip).permit(:departure, :destination)
   end
 
-  def calculate_transport_attributes
-    @transports = TransportType.all
-    geocoder_transport
-    #  Implémente le calcul du Co2 + de la distance + duration
-    return @transports
-  end
+  # def calculate_transport_attributes
+  #   @transports = TransportType.all
+  #   geocoder_transport
+  #   #  Implémente le calcul du Co2 + de la distance + duration
+  #   return @transports
+  # end
 
   def geocoder_transport
     # Geocode Markers

@@ -10,7 +10,7 @@
   <div class="row">
     <div class="section col-8">
       <div class="puceText"></div>
-      <h2>You choose to go by <%=  @transport.transport_type.name %></h2>
+      <h2>You choose to go by <%=  @trip.transport.transport_type.name %></h2>
       <p>Here is a overview of the trip and his impact</p>
     </div>
       <div data-controller="google-map"
@@ -45,6 +45,7 @@
     <div class="section col-8"
       data-controller="form-co2-calculation"
       data-form-co2-calculation-distance-value="<%= @trip_distance.round %>"
+      data-form-co2-calculation-transport-value="<%= @transport.id %>"
       >
       <div class="puceText"></div>
       <h2>Total CO2 weight of the journey</h2>
@@ -94,7 +95,17 @@
       </div>
       <div class="section mb-5">
         <div class="puceText"></div>
-        <div class="btn btn-primary px-4">Compenser mon voyage</div>
+
+        <%= link_to add_co2_path(transport_id: @transport.id,
+          co2_capacity: (@trip_distance * 0.23).round),
+          data:{form_co2_calculation_target: "lien"},
+          class:"btn btn-primary px-4" do %>
+
+          <span>Compenser mon voyage</span>
+        <% end %>
+
+
+
         <div class="btn btn-outline-secondary px-4">Modifier mon moyen de transport</div>
       </div>
     </div>

@@ -1,0 +1,90 @@
+<div class="container">
+  <div class="row">
+    <div class="section col-8">
+      <div class="puceText"></div>
+      <h2>My dashboard</h2>
+      <p>Find here an overview of all your trips and compensations</p>
+      <div class="ligne1 d-flex flex-wrap">
+
+        <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
+          <h3>Total Co² emission balance</h3>
+          <div class="totaldescription text-left border-left">
+            <div class="description">
+              <p>850 Kg co² e</p>
+            </div>
+          </div>
+          <div class="btn btn-outline-secondary px-4">See details</div>
+        </div>
+
+        <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
+          <h3>Total balance sheet compensation</h3>
+          <div class="totaldescription text-left border-left my-3">
+            <div class="description">
+              <p>850 Kg co² e</p>
+              <p class="smaller">7 years yet for a balanced account</p>
+            </div>
+          </div>
+          <div class="btn btn-outline-secondary px-4">See details</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section col-8">
+      <div class="puceText"></div>
+      <h2>My emissions history</h2>
+      <p>Find here an overview of all your Co² emissions</p>
+
+      <div class="ligne1 d-flex flex-wrap">
+
+      <% current_user.trips.each do |trip| %>
+        <div class="transport-card position-relative p-4">
+              <div class="totaldescription d-flex justify-content-between align-items-center">
+                <h3><%= trip.transport.transport_type.name.capitalize %></h3>
+                <div class="icone-trip">
+                  <%= render partial: "shared/svg/#{trip.transport.transport_type.name.downcase}" %>
+                </div>
+              </div>
+              <div class="puceHoriz"></div>
+              <div class="trip-infos">
+
+                  <p><%= trip.departure %> / <%= trip.destination %></p>
+                  <p class="data-trip border-left ps-4"> <%= trip.transport.co2_capacity %><span class="smaller"> kg Co²e</span></p>
+
+                <p class="statut statut-validated mt-3"><i class="fa-regular fa-circle-check"></i> compensated</p>
+              </div>
+            </div>
+      <% end %>
+
+      </div>
+    </div>
+
+    <div class="section col-8">
+      <div class="puceText"></div>
+      <h2>My compensations history</h2>
+      <p>Find here an overview of all your Co² compensations</p>
+
+      <div class="w-100">
+        <div class="compensation-card p-4">
+          <h3>Plant some trees</h3>
+          <div class="border-left my-3 px-4">
+            <p>105 kg co²a / year</p>
+            <p>8 month left</p>
+          </div>
+        </div>
+        <div class="btn btn-outline-secondary px-4 py-2 w-100 my-3"><i class="fa-solid fa-plus"></i> Add a new compensation</div>
+      </div>
+    </div>
+
+
+
+    <div class="section col-8">
+      <div class="puceText"></div>
+      <h2>Need compensation idea ?</h2>
+      <p>Get inspired with the most used compensations</p>
+
+
+    </div>
+
+  </div>
+</div>
