@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get "transport_type", to: "trips#add_transport", as: "add_transport"
   # resources :transport, only: [:update]
 
+  resources :compensation_trips, only: [:create, :show, :index]
   get "transport", to: "transports#add_co2_to_transport", as: "add_co2"
 
-  resources :compensation_trip, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
