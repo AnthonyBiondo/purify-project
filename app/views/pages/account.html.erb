@@ -6,24 +6,11 @@
       <p>Find here an overview of all your trips and compensations</p>
       <div class="ligne1 d-flex flex-wrap">
 
-      <%
-      carbon_sum = 0
-      compensation_sum = 0
-
-      @trips.each do |trip|
-        carbon_sum += trip.transport.co2_capacity
-        trip.compensation_trips.each do |compensation_trip|
-          compensation_sum += compensation_trip.compensation.co2_absorption
-        end
-      end
-      %>
-
-
         <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
           <h3>Total Co² emission balance</h3>
           <div class="totaldescription text-left border-left">
             <div class="description">
-              <p> <span class="violet-text"><%= carbon_sum %> </span> Kg co² e</p>
+              <p> <span class="violet-text"><%= @carbon_sum %> </span> Kg co² e</p>
             </div>
           </div>
           <a href="#trip-history">
@@ -37,8 +24,8 @@
             <div class="description">
 
 
-              <p>  <span class="green-text"><%= compensation_sum %></span> Kg co² a / year</p>
-              <p class="smaller"> 7 years yet for a balanced account</p>
+              <p>  <span class="green-text"><%= @compensation_sum %></span> Kg co² a / year</p>
+              <p class="smaller"> <%= (@carbon_sum / @compensation_sum).round %> years yet for a balanced account</p>
             </div>
           </div>
           <a href="#compensation-history">
@@ -69,8 +56,11 @@
 
                   <p><%= trip.departure %> / <%= trip.destination %></p>
                   <p class="data-trip border-left ps-4"> <%= trip.transport.co2_capacity %><span class="smaller"> kg Co²e</span></p>
-
-                <p class="statut statut-validated mt-3"><i class="fa-regular fa-circle-check"></i> compensated</p>
+                <% if trip.compensation_trips.present? %>
+                  <p class="statut statut-validated mt-3"><i class="fa-regular fa-circle-check"></i> compensated</p>
+                <% else %>
+                  <p class="statut statut-pending mt-3"><i class="fa-solid fa-ellipsis"></i> still pending compensation</p>
+                <% end %>
               </div>
             </div>
       <% end %>
@@ -90,7 +80,7 @@
             <h3><%= compensation_trip.compensation.name %></h3>
             <h3><%= compensation_trip.trip.name %></h3>
             <div class="border-left my-3 px-4 info-compensation">
-              <p><%= compensation_trip.compensation.co2_absorption %> kg co²a / year</p>
+              <p><%= compensation_trip.status %> kg co²a / year</p>
               <p>8 month left</p>
             </div>
           </div>

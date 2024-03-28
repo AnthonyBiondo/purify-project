@@ -1,7 +1,18 @@
-<div class="heroShow d-flex align-items-center" style="background-image: linear-gradient(to bottom, rgba(20, 22, 39, 0.75), rgba(20, 22, 39, 0.75)), url('https://res.cloudinary.com/ddz1wg1i0/image/upload/v1711545646/a0ed79476cd04ee48092ef54bc7fc247_lx4bg9.jpg');">
+<% if @compensation.id == 7 %>
+  <div class="heroShow d-flex align-items-center" style="background-image: linear-gradient(to bottom, rgba(20, 22, 39, 0.75), rgba(20, 22, 39, 0.75)), url('https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+<% end %>
+<% if @compensation.id == 1 %>
+  <div class="heroShow d-flex align-items-center" style="background-image: linear-gradient(to bottom, rgba(20, 22, 39, 0.75), rgba(20, 22, 39, 0.75)), url('https://res.cloudinary.com/ddz1wg1i0/image/upload/v1711545646/a0ed79476cd04ee48092ef54bc7fc247_lx4bg9.jpg');">
+<% end %>
   <div class="container">
     <div class="row">
-      <h1 class="col-8 titre-banner">Let’s plant some trees !!</h1>
+      <% if @compensation.id == 7 %>
+        <h1 class="col-8 titre-banner">Let’s stop eating meat !!</h1>
+      <% end %>
+      <% if @compensation.id == 1 %>
+        <h1 class="col-8 titre-banner">Let’s plant some trees !!</h1>
+      <% end %>
+
     </div>
   </div>
 </div>
@@ -24,48 +35,67 @@
       <div class="labarre">
       </div>
 
+    <% if @compensation.id == 7 %>
       <div class="content">
+        <p class="average"> The average of CO2 absorbed by stopping meat consumption is approximately 30kg per year.</p>
+        <p class="in">In general, the meat industry is associated with significant CO2 emissions, primarily due to deforestation for pasture production and animal feed production. Therefore, stopping meat consumption can potentially reduce the demand for products associated with deforestation, thereby helping to limit CO2 emissions.</p>
+      </div>
+    <% end %>
+    <% if @compensation.id == 1 %>
+     <div class="content">
         <p class="average">On average, a tree absorbs between 10 and 50 kg of CO2/year.</p>
         <p class="in">In our calculation, we consider the lower average, i.e. 10 kg of
           CO2/year, i.e. 100 kg in 10 years' time.</p>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
+
+<% if @compensation.id == 7 %>
+  <div class="container col-7">
+    <div class="row text-end  justify-content-center mt-5 mb-5 ">
+
+      <%= simple_form_for [@compensation, @compensation_trip], class:"col-10 co2-form" do |f| %>
+              <div class="d-flex co2-form gap-3">
+                <div class="w-100">
+                  <%= simple_fields_for :other do |o| %>
+                    <%= o.input :number_of_trees, as: :select, collection:["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], label: false %>
+                  <% end %>
+                </div>
+
+              </div>
+              <%= f.input :trip, collection: @my_trips.map{|trip| [trip.name, trip.id]}, input_html: { class: 'form-control' }, label: false %>
+              <div class="co2-form">
+                <%= f.submit class:"btn btn-primary px-4" %>
+              </div>
+
+      <% end %>
+    </div>
+    </div>
+  </div>
+<% end %>
+<% if @compensation.id == 1 %>
 <div class="container col-7">
   <div class="row text-end  justify-content-center mt-5 mb-5 ">
-    <%= simple_form_for [@compensation, @compensation_trip], class:"col-10" do |f| %>
+
+    <%= simple_form_for [@compensation, @compensation_trip], class:"col-10 co2-form" do |f| %>
+
             <div class="d-flex co2-form gap-3">
-              <select type="select" placeholder="Tree type" class="form-control" data-form-co2-calculation-target="planetype">
-                <option value="1">Tree Type</option>
-                <option value="1.01">Poplar tree</option>
-                <option value="1.02">Pine tree	</option>
-                <option value="1.03">Elm tree	</option>
-                <option value="1.2">Plane tree	</option>
-                <option value="1">Mahogany tree	</option>
-                <option value="1.01">Whitebeam tree	</option>
-                <option value="1.02">Hazel tree	</option>
-                <option value="1.03">Walnut tree	</option>
-                <option value="1.2">Olive tree</option>
-                <option value="1.01">Pear tree</option>
-              </select>
+              <div class="w-50">
+                <%= simple_fields_for :other do |o| %>
+                <%= o.input :tree_name, as: :select, collection:["Whitebeam tree", "Poplar tree", "Pine tree", "Elm tree", "Pear tree"], label: false %>
+                <% end %>
+              </div>
 
-              <select type="text" placeholder="round trip" class="form-control" data-form-co2-calculation-target="roundtype">
-                <option value="1">Number of  Trees </option>
-                <option value="2">1</option>
-                <option value="3">2</option>
-                <option value="4">3</option>
-                <option value="5">4</option>
-                <option value="6">5</option>
-                <option value="7">6</option>
-                <option value="8">7</option>
-                <option value="9">8</option>
-                <option value="10">9</option>
-
-              </select>
+              <div class="w-50">
+                <%= simple_fields_for :other do |o| %>
+                  <%= o.input :number_of_trees, as: :select, collection:["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], label: false %>
+                <% end %>
+              </div>
 
             </div>
-            <%= f.input :trip, collection: @my_trips.map{|trip| [trip.name, trip.id]}, class:"from-control", label: false %>
+            <%= f.input :trip, collection: @my_trips.map{|trip| [trip.name, trip.id]}, input_html: { class: 'form-control' }, label: false %>
             <div class="co2-form">
               <%= f.submit class:"btn btn-primary px-4" %>
             </div>
@@ -74,3 +104,4 @@
   </div>
   </div>
 </div>
+<% end %>
