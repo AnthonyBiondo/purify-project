@@ -22,47 +22,38 @@
     >
       <div class="ligne1 d-flex flex-wrap">
         <% @transport_types.each do |transport_type| %>
-
           <div class="transport-type-card position-relative p-4">
+            <div id="spinner-<%= transport_type.name %>_duration" class="overlay">
+              <div class="spinner __<%= transport_type.name %>"></div>
+            </div>
             <%= link_to add_transport_path(trip_id: @trip.id, transport_type: transport_type, trip_distance: @trip_distance), data:{turbo:false} do %>
-
               <div class="ligne1 d-flex justify-content-between">
-
                 <div class="titre">
                   <h3><%= transport_type.name.capitalize %></h3>
                 </div>
-
                 <div class="icone">
                   <%= render partial: "shared/svg/#{transport_type.name.downcase}" %>
                 </div>
-
               </div>
-
               <div class="totaldescription d-flex">
-
-                <div class="puceHoriz"></div>
+                <div class="puceHoriz" data-direction-api-target="lineHoriz"></div>
                 <div class="description">
-
                   <% if transport_type.name == "plane" %>
                     <p class="data-trip"><%= @trip_distance.round %> km</p>
-                    <p class="distancefont"><%= (@trip_distance/900).round %> h</p>
+                    <p class=""><%= (@trip_distance/900).round %> h</p>
                   <% else %>
-                    <p class="data-trip" id="<%= transport_type.name %>_distance"> <span class="smaller">km</span></p>
+                    <p class="data-trip" id="<%= transport_type.name %>_distance"><span class="smaller">km</span></p>
                     <p class ="distancefont"id="<%= transport_type.name %>_duration"> </p>
                   <% end %>
-
-                  <p id="<%= transport_type.name %>_consumption"><%= (@trip_distance * transport_type.fuel_consumption / 1000).round %> Kgco² / 100 km</p>
-
+                  <p id="<%= transport_type.name %>_consumption"><%= (@trip_distance  * transport_type.fuel_consumption / 1000).round %> Kgco² / 100 km</p>
                 </div>
               </div>
-
 
               <div class="choosLink bton ">
                 <div class="boutn-transport">Selectioner</div>
               </div>
 
-
-             <% end %>
+            <% end %>
           </div>
         <% end %>
       </div>

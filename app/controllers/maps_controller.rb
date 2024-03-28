@@ -15,8 +15,13 @@ class MapsController < ApplicationController
       response = Net::HTTP.get_response(URI(url))
       json_response = JSON.parse(response.body)
 
-      distance_value = json_response["routes"][0]["legs"][0]["distance"]["text"]
-      duration_value = json_response["routes"][0]["legs"][0]["duration"]["text"]
+      if json_response["routes"].empty?
+        distance_value = "N/A"
+        duration_value = "N/A"
+      else
+        distance_value = json_response["routes"][0]["legs"][0]["distance"]["text"]
+        duration_value = json_response["routes"][0]["legs"][0]["duration"]["text"]
+      end
 
       distance_response_object["#{transport_mode}_distance"] = distance_value
       distance_response_object["#{transport_mode}_duration"] = duration_value
