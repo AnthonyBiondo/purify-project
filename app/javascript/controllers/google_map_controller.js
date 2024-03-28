@@ -35,10 +35,14 @@ export default class extends Controller {
 
     this.markersValue.forEach((marker) => {
       this.markerCoordinates = {lat: marker[0], lng: marker[1]}
+      const pinViewBackground = new google.maps.marker.PinView({
+        background: "#E6549A",
+      });
       const newMarker = new AdvancedMarkerView({
         map: this.map,
         position: this.markerCoordinates,
         title: "Purify_Show",
+        content: pinViewBackground.element,
       });
     })
 

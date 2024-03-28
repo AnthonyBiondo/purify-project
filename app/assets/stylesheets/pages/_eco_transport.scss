@@ -13,7 +13,7 @@
   border-radius: 24px;
   background: #1C1F36;
 }
-.transport-card a {text-decoration: none;}
+.transport-type-card a {text-decoration: none;}
 .haut-droit{
   width: 464px;
   height: 363px;
@@ -58,14 +58,6 @@
   margin: 24px 0px;
 }
 
-// .bton{
-//   width: 170px;
-//   height: 52px;
-//   flex-shrink: 0;
-//   border-radius: 24px;
-//   background: #282D4A;
-//   margin: 24px;
-// }
 
 .transport{
   margin: auto;
@@ -75,11 +67,6 @@
 .inspiration{
   margin-top: 24px;
 }
-
-// .puceText{
-//   margin-top: 10px;
-//   margin-right: 15px;
-// }
 
 .text{
   margin-left: 63px;
@@ -147,12 +134,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.87);
+  background: $navy;
   border-radius: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0.98;
+  opacity: 0.9;
   transition: 1.5s;
 }
 
@@ -169,17 +156,17 @@
 .spinner {
   width: 100px;
   height: 100px;
-  border-radius: 50%;
-  border: 7px solid #f3f3f3;
-  border-top: 7px solid $pink;
+  border-radius: 100%;
+  border: 2px solid $very-light-grey;
+  border-top: 2x solid $pink;
   animation: spin 1s linear infinite;
   &.__driving,
   &.__plane {
-    border-top: 10px solid $pink;
+    border-top: 2px solid $pink;
   }
   &.__walking,
   &.__bicycling {
-    border-top: 10px solid $green;
+    border-top: 2px solid $green;
   }
 }
 
