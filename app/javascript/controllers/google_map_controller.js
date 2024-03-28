@@ -32,7 +32,8 @@ export default class extends Controller {
       center: position,
       mapId: "a91aedc354161852",
       fullscreenControl: false,
-      streetViewControl: false
+      streetViewControl: false,
+      disableDefaultUI: true
     });
 
 
