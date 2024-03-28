@@ -35,6 +35,7 @@ export default class extends Controller {
       streetViewControl: false
     });
 
+
     this.markersValue.forEach((marker) => {
       this.markerCoordinates = {lat: marker[0], lng: marker[1]}
       const newMarker = new AdvancedMarkerView({
