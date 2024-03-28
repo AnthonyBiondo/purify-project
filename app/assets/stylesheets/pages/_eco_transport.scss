@@ -1,3 +1,10 @@
+.transport-type-card{
+  width: 45%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 24px;
+  background: #1C1F36;
+}
 .transport-card{
   width: 45%;
   height: auto;
@@ -50,10 +57,6 @@
   margin: 24px 0px;
 }
 
-.transport{
-  margin: auto;
-}
-
 // .bton{
 //   width: 170px;
 //   height: 52px;
@@ -65,11 +68,11 @@
 
 .transport{
   margin: auto;
-  padding-top: 90px;
+  padding-top: 48px;
 }
 
 .inspiration{
-  margin-top: 100px;
+  margin-top: 24px;
 }
 
 // .puceText{
