@@ -300,3 +300,9 @@
   right: 0;
   margin: 24px;
 }
+
+.new_trip:hover .boutn{
+  background-color: $very-light-grey;
+  color: $dark-violet;
+  transition: all cubic-bezier(0.60, 0.00, 0.40, 1) 1s;
+}
