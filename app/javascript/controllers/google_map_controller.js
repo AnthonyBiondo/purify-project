@@ -25,15 +25,16 @@ export default class extends Controller {
     const { Map } = await google.maps.importLibrary("maps");
     const { AdvancedMarkerView } = await google.maps.importLibrary("marker");
 
+
     // The map, centered at Uluru
     this.map = new Map(document.getElementById("map"), {
       zoom: 4,
       center: position,
-      mapId: "DEMO_MAP_ID",
+      mapId: "a91aedc354161852",
       fullscreenControl: false,
-      streetViewControl: false,
-
+      streetViewControl: false
     });
+
 
     this.markersValue.forEach((marker) => {
       this.markerCoordinates = {lat: marker[0], lng: marker[1]}
