@@ -6,8 +6,9 @@
 transport_array = ["plane", "driving", "bicycling", "walking"]
 consumption_array = ["100", "250", "0", "0"]
 
-Trip.destroy_all
+CompensationTrip.destroy_all
 Transport.destroy_all
+Trip.destroy_all
 User.destroy_all
 Compensation.destroy_all
 TransportType.destroy_all

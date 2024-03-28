@@ -10,10 +10,6 @@ export default class extends Controller {
 
   connect() {
     this.initMap();
-    // console.log(this.element);
-    // console.log(this.markersValue)
-    // console.log(this.centerValue)
-    // console.log(this.boundingValue)
   }
 
   // Initialize and add the map
