@@ -2,6 +2,9 @@
   justify-content: space-between;
   background: $navy;
   box-shadow: 5px 0px 24px 0px rgba(118, 92, 222, 0.24);
+  position:fixed;
+  width:100%;
+  z-index:10;
 }
 
 .navbar-lewagon .navbar-collapse {

@@ -20,53 +20,98 @@
 <div class="container">
   <div class="grid">
 
-    <div class="col1">
-      <div class="dubai">
-      <a class="boutn" href="/">Dubai</a>
-      </div>
-    </div>
+  <div class="col1">
+      <%= form_for(@trip) do |f| %>
+        <%= f.hidden_field :departure, value: "marseille" %>
+        <%= f.hidden_field :destination, value: "dubai" %>
+        <%= f.button :button, class:"btn" do%>
+          <div class="dubai">
+            <div class="boutn">Dubaï</div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+
+
+
 
     <div class="col2">
       <div class="col2-ligne1">
         <div class="col2-col1">
           <div class="col2-col1-ligne1">
-            <div class="istambule">
-              <a class="boutn" href="/">Istanbul</a>
-            </div>
+            <%= form_for(@trip) do |f| %>
+              <%= f.hidden_field :departure, value: "marseille" %>
+              <%= f.hidden_field :destination, value: "istambul" %>
+              <%= f.button :button, class:"btn" do%>
+                <div class="istambule">
+                  <div class="boutn">Istanbul</div>
+                </div>
+              <% end %>
+            <% end %>
           </div>
 
           <div class="col2-col1-ligne2">
-            <div class="malte">
-              <a class="boutn" href="/">Malte</a>
-            </div>
+            <%= form_for(@trip) do |f| %>
+                <%= f.hidden_field :departure, value: "marseille" %>
+                <%= f.hidden_field :destination, value: "Malte" %>
+                <%= f.button :button, class:"btn" do%>
+                  <div class="malte">
+                    <a class="boutn" href="/">Malte</a>
+                  </div>
+              <% end %>
+            <% end %>
           </div>
         </div>
 
         <div class="col2-col2">
-          <div class="paris">
-            <a class="boutn" href="/">Paris</a>
-          </div>
+          <%= form_for(@trip) do |f| %>
+            <%= f.hidden_field :departure, value: "marseille" %>
+            <%= f.hidden_field :destination, value: "Paris" %>
+            <%= f.button :button, class:"btn" do%>
+              <div class="paris">
+                <a class="boutn" href="/">Paris</a>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
 
 
       <div class="col2-ligne2">
         <div class="col2-line2-col1">
-          <div class="naples">
-            <a class="boutn" href="/">Naples</a>
-          </div>
+          <%= form_for(@trip) do |f| %>
+            <%= f.hidden_field :departure, value: "marseille" %>
+            <%= f.hidden_field :destination, value: "Naples" %>
+            <%= f.button :button, class:"btn" do%>
+              <div class="naples">
+                <a class="boutn" href="/">Naples</a>
+              </div>
+            <% end %>
+          <% end %>
         </div>
 
         <div class="col2-line2-col2">
-          <div class="santorin">
-            <a class="boutn" href="/">Santorin</a>
-          </div>
+          <%= form_for(@trip) do |f| %>
+            <%= f.hidden_field :departure, value: "marseille" %>
+            <%= f.hidden_field :destination, value: "Santorin" %>
+            <%= f.button :button, class:"btn" do%>
+                <div class="santorin">
+                  <a class="boutn" href="/">Santorin</a>
+                </div>
+            <% end %>
+          <% end %>
         </div>
 
         <div class="col2-line2-col3">
-          <div class="malaga">
-            <a class="boutn" href="/">Malaga</a>
-          </div>
+          <%= form_for(@trip) do |f| %>
+            <%= f.hidden_field :departure, value: "marseille" %>
+            <%= f.hidden_field :destination, value: "Malaga" %>
+            <%= f.button :button, class:"btn" do%>
+              <div class="malaga">
+                <a class="boutn" href="/">Malaga</a>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
