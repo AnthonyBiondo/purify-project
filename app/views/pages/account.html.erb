@@ -8,8 +8,16 @@
 
       <%
       carbon_sum = 0
-      @trips.each {|trip| carbon_sum += trip.transport.co2_capacity }
+      compensation_sum = 0
+
+      @trips.each do |trip|
+        carbon_sum += trip.transport.co2_capacity
+        trip.compensation_trips.each do |compensation_trip|
+          compensation_sum += compensation_trip.compensation.co2_absorption
+        end
+      end
       %>
+
 
         <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
           <h3>Total Co² emission balance</h3>
@@ -27,7 +35,7 @@
             <div class="description">
 
 
-              <p>150 Kg co² a</p>
+              <p><%= compensation_sum %> Kg co² a / year</p>
               <p class="smaller">7 years yet for a balanced account</p>
             </div>
           </div>
@@ -78,13 +86,15 @@
             <h3><%= compensation_trip.compensation.name %></h3>
             <h3><%= compensation_trip.trip.name %></h3>
             <div class="border-left my-3 px-4 info-compensation">
-              <p>105 kg co²a / year</p>
+              <p><%= compensation_trip.compensation.co2_absorption %> kg co²a / year</p>
               <p>8 month left</p>
             </div>
           </div>
         <% end%>
       <% end %>
+        <a href="#compensation-grid">
         <div class="btn btn-outline-secondary px-4 py-2 w-100 my-3"><i class="fa-solid fa-plus"></i> Add a new compensation</div>
+        </a>
       </div>
     </div>
 

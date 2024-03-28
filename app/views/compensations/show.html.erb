@@ -7,7 +7,8 @@
 </div>
 
 <div class="container">
-  <div class="forest md-4">
+  <div class="row">
+  <div class="forest mt-4 col-8">
     <div class="puceText"></div>
     <div>
       <p class="txt"><%= @compensation.name %></p>
@@ -17,7 +18,7 @@
 </div>
 
 
-<div class="container d-flex justify-content-center align-items-center mt-5">
+<div class="container d-flex justify-content-center align-items-center mt-5 col-8">
   <div class="box">
     <div class="nom d-flex justify-content-center align-items-center">
       <div class="labarre">
@@ -64,11 +65,12 @@
               </select>
 
             </div>
-            <%= f.input :trip, collection: @my_trips.map{|trip| ["#{trip.departure} / #{trip.destination}", trip.id]}%>
+            <%= f.input :trip, collection: @my_trips.map{|trip| [trip.name, trip.id]}%>
             <div class="co2-form">
               <%= f.submit class:"btn btn-primary px-4" %>
             </div>
 
     <% end %>
+  </div>
   </div>
 </div>
