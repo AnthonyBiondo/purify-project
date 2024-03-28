@@ -17,7 +17,7 @@ export default class extends Controller {
         // this.distanceTargets.innerHTML = data[key]
         document.querySelector(`#${key}`).innerHTML = data[key]
         const result = (parseInt(data["driving_distance"], 10) * this.tripConsumptionValue)
-        document.querySelector(`#driving_consumption`).innerHTML = `${result} litres de super gazoil`
+        document.querySelector(`#driving_consumption`).innerHTML = `${Math.round(result / 1000)} kg Co²e`
       }))
     });
   }

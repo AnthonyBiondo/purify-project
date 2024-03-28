@@ -3,11 +3,8 @@
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 
-require "open-uri"
-require "faker"
-
 transport_array = ["plane", "driving", "bicycling", "walking"]
-consumption_array = ["5", "8", "0", "0"]
+consumption_array = ["100", "250", "0", "0"]
 
 Trip.destroy_all
 Transport.destroy_all
@@ -31,8 +28,12 @@ end
 
 puts "let'screate a compensations ..."
 
-(1..5).each do
-  Compensation.create(name: Faker::Company.catch_phrase, co2_absorption: Faker::Number.number(digits: 2))
-end
+Compensation.create(name: "Participation in reforestation", co2_absorption: "10")
+Compensation.create(name: "Participation in the protection of existing forests", co2_absorption: "15")
+Compensation.create(name: "Participation in agriculture and land management", co2_absorption: "5")
+Compensation.create(name: "Implementing energy renovation", co2_absorption: "20")
+Compensation.create(name: "Participation in carbon capture", co2_absorption: "12")
+Compensation.create(name: "Committing to prioritize public transportation", co2_absorption: "8")
+Compensation.create(name: "Ceasing meat consumption", co2_absorption: "30")
 
 puts "ok that's all"

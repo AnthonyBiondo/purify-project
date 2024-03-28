@@ -21,10 +21,9 @@
       data-direction-api-trip-consumption-value="<%=  @transport_types.find_by(name:"driving").fuel_consumption %>"
     >
       <div class="ligne1 d-flex flex-wrap">
-
         <% @transport_types.each do |transport_type| %>
 
-          <div class="transport-card position-relative">
+          <div class="transport-card position-relative p-4">
             <%= link_to add_transport_path(trip_id: @trip.id, transport_type: transport_type, trip_distance: @trip_distance), data:{turbo:false} do %>
 
               <div class="ligne1 d-flex justify-content-between">
@@ -52,14 +51,14 @@
                     <p class ="distancefont"id="<%= transport_type.name %>_duration"> </p>
                   <% end %>
 
-                  <p id="<%= transport_type.name %>_consumption"><%= transport_type.fuel_consumption %> Kgco² / 100 km</p>
+                  <p id="<%= transport_type.name %>_consumption"><%= (@trip_distance * transport_type.fuel_consumption / 1000).round %> Kgco² / 100 km</p>
 
                 </div>
               </div>
 
 
-              <div class="choosLink bton position-absolute bottom-0 end-0">
-                <a class="boutn" href="/">Selectioner</a>
+              <div class="choosLink bton ">
+                <a class="boutn-transport" href="/">Selectioner</a>
               </div>
 
 

@@ -1,9 +1,8 @@
 class CompensationTripsController < ApplicationController
-  def index
-    @compensations = Compensation.all
-  end
-
-  def show
-    @compensation = Compensation.find(params[:id])
+  def create
+    @trip = Trip.find(params[:compensation_trip][:trip])
+    @compensation = Compensation.find(params[:compensation_id])
+    CompensationTrip.create(trip: @trip, compensation: @compensation)
+    redirect_to users_account_path
   end
 end

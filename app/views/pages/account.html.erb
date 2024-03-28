@@ -8,7 +8,7 @@
 
       <%
       carbon_sum = 0
-      current_user.trips.each {|trip| carbon_sum += trip.transport.co2_capacity }
+      @trips.each {|trip| carbon_sum += trip.transport.co2_capacity }
       %>
 
         <div class="transport-card position-relative p-4 d-flex flex-column justify-content-between">
@@ -27,7 +27,7 @@
             <div class="description">
 
 
-              <p>150 Kg co² e</p>
+              <p>150 Kg co² a</p>
               <p class="smaller">7 years yet for a balanced account</p>
             </div>
           </div>
@@ -44,7 +44,7 @@
 
       <div class="ligne1 d-flex flex-wrap">
 
-      <% current_user.trips.each do |trip| %>
+      <% @trips.each do |trip| %>
         <div class="transport-card position-relative p-4">
               <div class="totaldescription d-flex justify-content-between align-items-center">
                 <h3><%= trip.transport.transport_type.name.capitalize %></h3>
@@ -72,13 +72,18 @@
       <p>Find here an overview of all your Co² compensations</p>
 
       <div class="w-100">
-        <div class="compensation-card p-4">
-          <h3>Plant some trees</h3>
-          <div class="border-left my-3 px-4">
-            <p>105 kg co²a / year</p>
-            <p>8 month left</p>
+      <% @trips.each do |trip| %>
+        <% trip.compensation_trips.each do |compensation_trip| %>
+          <div class="compensation-card p-4">
+            <h3><%= compensation_trip.compensation.name %></h3>
+            <h3><%= compensation_trip.trip.name %></h3>
+            <div class="border-left my-3 px-4 info-compensation">
+              <p>105 kg co²a / year</p>
+              <p>8 month left</p>
+            </div>
           </div>
-        </div>
+        <% end%>
+      <% end %>
         <div class="btn btn-outline-secondary px-4 py-2 w-100 my-3"><i class="fa-solid fa-plus"></i> Add a new compensation</div>
       </div>
     </div>
@@ -90,6 +95,16 @@
       <h2>Need compensation idea ?</h2>
       <p>Get inspired with the most used compensations</p>
 
+      <div class="w-100">
+        <% @compensations.each do |compensation| %>
+          <div class="compensation-card p-4">
+            <%= link_to compensation_path(compensation) do %>
+              <h3><%= compensation.name %></h3>
+              <p><%= compensation.co2_absorption %>kgCO²a / an</p>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
 
     </div>
 

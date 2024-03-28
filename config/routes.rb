@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   resources :trips, only:[:index, :show, :new, :create, :edit, :update] do
     resources :transports, only: [:index]
   end
+  resources :compensations, only: [:show] do
+    resources :compensation_trips, only: [:create]
+  end
+
   get "transport_type", to: "trips#add_transport", as: "add_transport"
   # resources :transport, only: [:update]
 
-  resources :compensation_trips, only: [:create, :show, :index]
   get "transport", to: "transports#add_co2_to_transport", as: "add_co2"
-
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
