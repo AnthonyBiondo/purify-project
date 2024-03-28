@@ -4,3 +4,9 @@ a{color: $text-color;}
 .border-left{border-left: 2px solid $very-light-grey;}
 
 .row{justify-content: center;}
+
+.titre-banner{font-size:4em;}
+.grid button{padding: 0;}
+
+.grid button:active{outline: none;}
+.grid button:focus{outline: none;}
