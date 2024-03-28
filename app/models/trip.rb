@@ -9,6 +9,6 @@ class Trip < ApplicationRecord
     # after_validation :geocode, if: :will_save_change_to_destination?
 
     def name
-      "#{destination} / #{departure}"
+      "#{departure.capitalize} / #{destination.capitalize}"
     end
 end

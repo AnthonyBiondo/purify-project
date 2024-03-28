@@ -1,6 +1,5 @@
 .box{
   width: 952px;
-  height: 363px;
   flex-shrink: 0;
   border-radius: 24px;
   background: #1C1F36;
@@ -36,8 +35,7 @@
 }
 
 .nom{
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin: 60px 0;
 }
 
 .txt{
