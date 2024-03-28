@@ -78,8 +78,8 @@
 // }
 
 .text{
-margin-left: 63px;
-font-size: x-small;
+  margin-left: 63px;
+  font-size: x-small;
 }
 
 .auto{
@@ -94,7 +94,8 @@ font-size: x-small;
 }
 
 .choosLink{
-text-decoration: none;}
+  text-decoration: none;
+}
 
 .description{
   font-size: x-large;
@@ -128,4 +129,13 @@ text-decoration: none;}
 
 .smaller{
   font-size: 0.6em !important;
+}
+.boutn-transport{
+  display: inline-flex;
+  padding: 8px 35px;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  border: 2px solid #FFF;
+  margin: 24px;
 }

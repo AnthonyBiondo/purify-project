@@ -1,0 +1,74 @@
+<div class="heroShow d-flex align-items-center" style="background-image: linear-gradient(to bottom, rgba(20, 22, 39, 0.75), rgba(20, 22, 39, 0.75)), url('https://res.cloudinary.com/ddz1wg1i0/image/upload/v1711545646/a0ed79476cd04ee48092ef54bc7fc247_lx4bg9.jpg');">
+  <div class="container">
+    <div class="row">
+      <h1 class="col-8">Let’s plant some trees !!</h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="forest md-4">
+    <div class="puceText"></div>
+    <div>
+      <p class="txt"><%= @compensation.name %></p>
+      <p class="texte">ecosystem regeneration to take action near you or elsewhere in the world.</p>
+    </div>
+  </div>
+</div>
+
+
+<div class="container d-flex justify-content-center align-items-center mt-5">
+  <div class="box">
+    <div class="nom d-flex justify-content-center align-items-center">
+      <div class="labarre">
+      </div>
+
+      <div class="content">
+        <p class="average">On average, a tree absorbs between 10 and 50 kg of CO2/year.</p>
+        <p class="in">In our calculation, we consider the lower average, i.e. 10 kg of
+          CO2/year, i.e. 100 kg in 10 years' time.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container col-7">
+  <div class="row text-end  justify-content-center mt-5 mb-5 ">
+    <%= simple_form_for [@compensation, @compensation_trip], class:"col-10" do |f| %>
+            <div class="d-flex co2-form gap-3">
+              <select type="select" placeholder="Tree type" class="form-control" data-form-co2-calculation-target="planetype">
+                <option value="1">Tree Type</option>
+                <option value="1.01">Poplar tree</option>
+                <option value="1.02">Pine tree	</option>
+                <option value="1.03">Elm tree	</option>
+                <option value="1.2">Plane tree	</option>
+                <option value="1">Mahogany tree	</option>
+                <option value="1.01">Whitebeam tree	</option>
+                <option value="1.02">Hazel tree	</option>
+                <option value="1.03">Walnut tree	</option>
+                <option value="1.2">Olive tree</option>
+                <option value="1.01">Pear tree</option>
+              </select>
+
+              <select type="text" placeholder="round trip" class="form-control" data-form-co2-calculation-target="roundtype">
+                <option value="1">Number of  Trees </option>
+                <option value="2">1</option>
+                <option value="3">2</option>
+                <option value="4">3</option>
+                <option value="5">4</option>
+                <option value="6">5</option>
+                <option value="7">6</option>
+                <option value="8">7</option>
+                <option value="9">8</option>
+                <option value="10">9</option>
+
+              </select>
+
+            </div>
+            <%= f.input :trip, collection: @my_trips.map{|trip| ["#{trip.departure} / #{trip.destination}", trip.id]}%>
+            <div class="co2-form">
+              <%= f.submit class:"btn btn-primary px-4" %>
+            </div>
+
+    <% end %>
+  </div>
+</div>

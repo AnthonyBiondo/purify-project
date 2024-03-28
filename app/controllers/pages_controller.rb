@@ -5,6 +5,8 @@ class PagesController < ApplicationController
   end
 
   def account
+    @trips = current_user.trips.reject { |trip| trip.transport.nil? }
+    @compensations = Compensation.all
 
   end
 end
