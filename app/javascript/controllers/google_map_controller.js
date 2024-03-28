@@ -37,14 +37,21 @@ export default class extends Controller {
     });
 
 
-    this.markersValue.forEach((marker) => {
-      this.markerCoordinates = {lat: marker[0], lng: marker[1]}
+     this.markersValue.forEach((marker) => {
+      this.markerCoordinates = {lat: marker[0], lng: marker[1]};
       const newMarker = new AdvancedMarkerView({
         map: this.map,
         position: this.markerCoordinates,
         title: "Purify_Show",
+        icon: {
+          path: google.maps.SymbolPath.CIRCLE, // Choisissez le symbole de votre marqueur
+          scale: 10,  // Taille du marqueur
+          fillColor: "#FF0000",  // Couleur de remplissage du marqueur
+          fillOpacity: 1, // Opacité du remplissage
+          strokeWeight: 3 // Épaisseur du trait du marqueur
+        }
       });
-    })
+    });
 
     const markerBounds = new google.maps.LatlngBounds();
     this.boundingValue.forEach(bound => {
