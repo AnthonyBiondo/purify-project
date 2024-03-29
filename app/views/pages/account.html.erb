@@ -25,7 +25,11 @@
 
 
               <p>  <span class="green-text"><%= @compensation_sum %></span> Kg co² a / year</p>
+
+
+                <% unless @compensation_sum == 0  %>
               <p class="smaller"> <%= (@carbon_sum / @compensation_sum).round %> years yet for a balanced account</p>
+                <% end %>
             </div>
           </div>
           <a href="#compensation-history">
@@ -76,7 +80,7 @@
       <div class="w-100"  id="compensation-history">
       <% @trips.each do |trip| %>
         <% trip.compensation_trips.each do |compensation_trip| %>
-          <% if compensation_trip.compensation_id == 14 %>
+          <% if compensation_trip.compensation.name == "Ceasing meat consumption" %>
             <div class="compensation-card p-4" style="background-image:
                   linear-gradient(to bottom, rgba(20, 22, 39, 0.3), rgba(20, 22, 39, 0.9)),
                   url('https://images.unsplash.com/photo-1666013942642-b7b54ecafd7d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
