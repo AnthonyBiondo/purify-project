@@ -76,7 +76,15 @@
       <div class="w-100"  id="compensation-history">
       <% @trips.each do |trip| %>
         <% trip.compensation_trips.each do |compensation_trip| %>
-          <div class="compensation-card p-4">
+          <% if compensation_trip.compensation_id == 14 %>
+            <div class="compensation-card p-4" style="background-image:
+                  linear-gradient(to bottom, rgba(20, 22, 39, 0.3), rgba(20, 22, 39, 0.9)),
+                  url('https://images.unsplash.com/photo-1666013942642-b7b54ecafd7d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+          <% else %>
+              <div class="compensation-card p-4" style="background-image:
+                  linear-gradient(to bottom, rgba(20, 22, 39, 0.3), rgba(20, 22, 39, 0.9)),
+                  url('https://images.unsplash.com/photo-1503435980610-a51f3ddfee50?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+          <% end %>
             <h3><%= compensation_trip.compensation.name %></h3>
             <h3><%= compensation_trip.trip.name %></h3>
             <div class="border-left my-3 px-4 info-compensation">
@@ -105,7 +113,7 @@
     <div class="c2ol">
       <div class="co2l-lign2e">
         <div class="co2l-lin2e-co1l">
-          <div class="dechet p-4">
+          <div class="dechet p-4 item-grid-compensation">
             <h4>Participation in reforestation</h4>
             <p>10kgCO²a / an</p>
             <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Participation in reforestation").id%>">Chosse</a>
@@ -114,7 +122,7 @@
         </div>
 
         <div class="co2l-lin2e-co2l">
-          <div class="forret p-4">
+          <div class="forret p-4 item-grid-compensation">
             <h4>Participation in the protection of existing forests</h4>
             <p>15kgCO²a / an</p>
             <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Participation in the protection of existing forests").id%>">Choose</a>
@@ -122,7 +130,7 @@
         </div>
 
         <div class="co2l-lin2e-co2">
-          <div class="co2 p-4">
+          <div class="co2 p-4 item-grid-compensation">
           <h4>Participation in carbon capture</h4>
           <p>12kgCO²a / an</p>
             <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Participation in carbon capture").id%>">Choose</a>
@@ -132,7 +140,7 @@
       <div class="co2l-lign1e">
         <div class="co2l-co1l">
           <div class="co2l-co1l-lign1e">
-            <div class="share p-4">
+            <div class="share p-4 item-grid-compensation">
               <h4>Committing to prioritize public transportation</h4>
               <p> 8kgCO²a / an</p>
               <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Committing to prioritize public transportation").id%>">Choose</a>
@@ -140,7 +148,7 @@
           </div>
 
           <div class="co2l-co1l-lign2e">
-            <div class="voltaic p-4">
+            <div class="voltaic p-4 item-grid-compensation">
               <h4>Implementing energy renovation</h4>
               <p>20kgCO²a / an</p>
               <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Implementing energy renovation").id%>">Choose</a>
@@ -149,16 +157,16 @@
         </div>
 
         <div class="co2l-co2l">
-          <div class="meat p-4">
+          <div class="meat p-4 item-grid-compensation">
             <h4>Ceasing meat consumption</h4>
             <p>30kgCO²a / an</p>
-            <a class="boutn" href="/compensations/<%=Compensation.find_by(name: "Ceasing meat consumption").id%>">Choose</a>
+            <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Ceasing meat consumption").id%>">Choose</a>
           </div>
         </div>
       </div>
     </div>
     <div class="co1l">
-      <div class="tree p-4">
+      <div class="tree p-4 item-grid-compensation">
         <h4>Participation in agriculture and land management</h4>
         <p>5kgCO²a / an</p>
         <a class="bnnt" href="/compensations/<%=Compensation.find_by(name: "Participation in agriculture and land management").id%>">Choose</a>

@@ -11,7 +11,7 @@
 
 .polyline{
   stroke-dasharray: 350;
-  animation: drawingSvg 3s cubic-bezier(0.62, 0.00, 0.38, 1) 0.5s normal both;
+  animation: drawingSvg 3s cubic-bezier(0.62, 0.00, 0.38, 1) 5s normal both;
 }
 
 @keyframes drawingSvgPink {
@@ -25,5 +25,5 @@
 
 .pinkline{
   stroke-dasharray: 760;
-  animation: drawingSvgPink 2s cubic-bezier(0.62, 0.00, 0.38, 1) 1.5s normal both;
+  animation: drawingSvgPink 3s cubic-bezier(0.62, 0.00, 0.38, 1) 5s normal both;
 }
