@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     @compensation_sum = 0
 
     @trips.each do |trip|
+
       @carbon_sum += trip.transport.co2_capacity
       trip.compensation_trips.each do |compensation_trip|
         @compensation_sum += compensation_trip.compensation.co2_absorption
